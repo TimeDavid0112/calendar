@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#1c1b1f" id="theme-color-meta">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Календарь | TimeSQ</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="theme-dark">
+    <header class="app-header">
+        <div class="logo-container">
+            <svg class="logo" viewBox="0 0 40 40" width="32" height="32">
+                <rect width="40" height="40" rx="8" fill="#6750a4"/>
+                <path fill="#ffffff" d="M20 8c-1.1 0-2 .9-2 2v8h-6c-1.1 0-2 .9-2 2s.9 2 2 2h6v6c0 1.1.9 2 2 2s2-.9 2-2v-6h6c1.1 0 2-.9 2-2s-.9-2-2-2h-6v-8c0-1.1-.9-2-2-2z"/>
+                <circle cx="28" cy="12" r="3" fill="#d0bcff"/>
+            </svg>
+            <h1>Календарь</h1>
+        </div>
+        <button id="btn-theme" class="icon-btn" aria-label="Сменить тему">
+            <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>
+        </button>
+    </header>
+
+    <main id="app-container">
+        <section id="view-grid" class="view active">
+            <div class="week-nav">
+                <button id="btn-prev-week" class="nav-btn">←</button>
+                <span id="current-week-label" class="week-label"></span>
+                <button id="btn-next-week" class="nav-btn">→</button>
+            </div>
+            
+            <div id="habits-list" class="habits-list"></div>
+            
+            <div class="month-stats-summary" id="month-stats-summary"></div>
+            
+            <button id="btn-view-stats" class="btn-secondary" style="width: 100%; margin-top: 16px;">
+                📊 Статистика месяца
+            </button>
+            
+            <button id="btn-add-habit" class="fab" aria-label="Добавить привычку">+</button>
+        </section>
+
+        <section id="view-stats" class="view">
+            <div class="stats-header">
+                <button id="btn-back-stats" class="icon-btn">←</button>
+                <h2>Статистика месяца</h2>
+            </div>
+            <div id="stats-list" class="list-container"></div>
+        </section>
+    </main>
+
+    <dialog id="dialog-habit" class="modal">
+        <div class="modal-header">
+            <svg class="modal-logo" viewBox="0 0 40 40" width="40" height="40">
+                <rect width="40" height="40" rx="8" fill="#6750a4"/>
+                <path fill="#ffffff" d="M20 8c-1.1 0-2 .9-2 2v8h-6c-1.1 0-2 .9-2 2s.9 2 2 2h6v6c0 1.1.9 2 2 2s2-.9 2-2v-6h6c1.1 0 2-.9 2-2s-.9-2-2-2h-6v-8c0-1.1-.9-2-2-2z"/>
+                <circle cx="28" cy="12" r="3" fill="#d0bcff"/>
+            </svg>
+            <div>
+                <h3 id="dialog-habit-title">Новая привычка</h3>
+                <span class="modal-subtitle">TimeSQ Календарь</span>
+            </div>
+        </div>
+        <form id="form-habit">
+            <input type="hidden" id="input-habit-id">
+            
+            <div class="input-group">
+                <label>Иконка</label>
+                <div class="emoji-picker" id="emoji-picker">
+                    <button type="button" class="emoji-btn selected" data-emoji="🧘"></button>
+                    <button type="button" class="emoji-btn" data-emoji="💧">💧</button>
+                    <button type="button" class="emoji-btn" data-emoji="🚶"></button>
+                    <button type="button" class="emoji-btn" data-emoji="📚">📚</button>
+                    <button type="button" class="emoji-btn" data-emoji="🥗">🥗</button>
+                    <button type="button" class="emoji-btn" data-emoji="💪">💪</button>
+                    <button type="button" class="emoji-btn" data-emoji="😴">😴</button>
+                    <button type="button" class="emoji-btn" data-emoji="📝">📝</button>
+                    <button type="button" class="emoji-btn" data-emoji="🧴">🧴</button>
+                    <button type="button" class="emoji-btn" data-emoji="📱">📱</button>
+                    <button type="button" class="emoji-btn" data-emoji="🏃"></button>
+                    <button type="button" class="emoji-btn" data-emoji="🎯"></button>
+                    <button type="button" class="emoji-btn" data-emoji="🍎">🍎</button>
+                    <button type="button" class="emoji-btn" data-emoji="☕">☕</button>
+                    <button type="button" class="emoji-btn" data-emoji="🧠"></button>
+                    <button type="button" class="emoji-btn" data-emoji="🌅">🌅</button>
+                    <button type="button" class="emoji-btn" data-emoji="🏋️">🏋️</button>
+                    <button type="button" class="emoji-btn" data-emoji="🎨"></button>
+                </div>
+                <input type="hidden" id="input-habit-icon" value="">
+            </div>
+            
+            <input type="text" id="input-habit-name" placeholder="Название привычки" required minlength="2" maxlength="30">
+            
+            <div class="input-group">
+                <label for="input-habit-goal">Цель в месяц (раз)</label>
+                <input type="number" id="input-habit-goal" placeholder="10" required min="1" max="300">
+            </div>
+            
+            <div class="modal-actions">
+                <button type="button" class="btn-text modal-cancel">Отмена</button>
+                <button type="submit" class="btn-primary" id="btn-save-habit">Создать</button>
+            </div>
+        </form>
+        <div class="modal-footer">
+            <span>TimeSQ © 2026</span>
+        </div>
+    </dialog>
+
+    <div id="context-menu" class="context-menu hidden">
+        <button id="ctx-edit" class="context-item">✏️ Редактировать</button>
+        <button id="ctx-delete" class="context-item danger">🗑️ Удалить</button>
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>

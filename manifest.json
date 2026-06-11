@@ -1,0 +1,26 @@
+{
+  "name": "Календарь | TimeSQ",
+  "short_name": "TimeSQ",
+  "description": "Трекер привычек от TimeSQ",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#1c1b1f",
+  "theme_color": "#1c1b1f",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='80' fill='%236750a4'/%3E%3Cpath fill='%23ffffff' d='M256 140c-22 0-40 18-40 40v160H136c-22 0-40 18-40 40s18 40 40 40h80v80c0 22 18 40 40 40s40-18 40-40v-80h80c22 0 40-18 40-40s-18-40-40-40h-80V180c0-22-18-40-40-40z'/%3E%3Ccircle cx='360' cy='160' r='50' fill='%23d0bcff'/%3E%3Ctext x='256' y='480' font-family='Arial' font-size='40' fill='%23ffffff' text-anchor='middle' font-weight='bold'%3ETimeSQ%3C/text%3E%3C/svg%3E",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='80' fill='%236750a4'/%3E%3Cpath fill='%23ffffff' d='M256 140c-22 0-40 18-40 40v160H136c-22 0-40 18-40 40s18 40 40 40h80v80c0 22 18 40 40 40s40-18 40-40v-80h80c22 0 40-18 40-40s-18-40-40-40h-80V180c0-22-18-40-40-40z'/%3E%3Ccircle cx='360' cy='160' r='50' fill='%23d0bcff'/%3E%3Ctext x='256' y='480' font-family='Arial' font-size='40' fill='%23ffffff' text-anchor='middle' font-weight='bold'%3ETimeSQ%3C/text%3E%3C/svg%3E",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["productivity", "utilities"],
+  "screenshots": []
+}
